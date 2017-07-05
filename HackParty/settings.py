@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'HackParty.wsgi.application'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-from .mail_info import EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT, EMAIL_USE_TLS
+from HackParty.mail_info import EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT, EMAIL_USE_TLS
 
 EMAIL_HOST          = EMAIL_HOST
 EMAIL_HOST_USER     = EMAIL_HOST_USER
