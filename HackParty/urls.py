@@ -21,7 +21,7 @@ from django.views.static import serve
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^user/', include('user_mgr.urls', namespace='user')),
-    url(r'^post/', include('postApp.urls', namespace='post')),
+    url(r'^', include('postApp.urls', namespace='post')),
     #url(r'^poll/', include('pollApp.urls', namespace='poll')),
    url(r'^media/(?P<path>.*)$', serve,
                  {'document_root': settings.MEDIA_ROOT}),
