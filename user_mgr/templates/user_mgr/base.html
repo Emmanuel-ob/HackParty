@@ -1,0 +1,65 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HackParty| {% block title%} {% endblock title%}</title>
+
+    <!-- Material Design Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'user_mgr/css/font-awesome.min.css' %}">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'user_mgr/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="{% static 'user_mgr/css/md.css' %}" rel="stylesheet">
+    <link href="{% static 'user_mgr/css/login.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+<!-- Nav bar stars -->
+<!-- Navigation section -->
+<section id="features">
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon icon-bar"></span>
+        <span class="icon icon-bar"></span>
+        <span class="icon icon-bar"></span>
+      </button>
+      <a href="{% url 'postApp:index' %}" class="navbar-brand"><b id="hack">HACK</b><br><b id="party">PARTY</b></a>
+    </div>
+  </div>
+</div>
+<!-- end of nav -->
+
+{% block content%} 
+
+{% endblock content%}
+
+
+ <!-- SCRIPTS -->
+
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="{% static 'user_mgr/js/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'user_mgr/js/bootstrap.min.js' %}"></script>
+
+    <!-- Material Design Bootstrap -->
+    <script type="text/javascript" src="{% static 'user_mgr/js/mdb.js' %}"></script>
+
+
+</body>
+
+</html>

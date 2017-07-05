@@ -1,0 +1,305 @@
+{% load staticfiles %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HackParty | {% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'postApp/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'postApp/assets/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'postApp/assets/css/index.css' %}">
+</head>
+<body>
+    <!-- bounce -->
+    <button onclick="topFunction()" id="myBtn" title="Go to top" class="animated bounceInUp"><i class="fa fa-chevron-up fa-2x animated fadeInDown" style="animation-delay: 0.5s;"></i></button> 
+    <header>
+
+    <header>
+        <nav class="navbar navbar-default bg-white bs" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="" href="{% url 'postApp:index' %}"><img src="{% static 'postApp/assets/img/imgs/hack.PNG' %}"></a>
+                </div>
+        
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse m-t-10">
+                    <div class="col-md-2">
+                        
+                    </div>
+                    <div class="col-md-4" >
+                        <form class="navbar-form ">
+                          <div class="input-group dropdown">
+                     
+                         <!--  <h3>Search Post</h3> -->
+                            <input type="text" name="search" id="search" class="form-control width-350 mwidth-100p dropdown-toggle" placeholder="Enter your search" data-toggle="dropdown">
+                            {% csrf_token %}
+
+                            <ul id="search-results" class="dropdown-menu width-350 mwidth-100p">
+                                
+                            </ul>
+                            <div class="input-group-btn">
+                              <button class="btn bg-dark c-white" type="submit">Search
+                               
+                              </button> 
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                    
+                    
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                        
+                            <div class="img">
+                            {%  if request.user.is_authenticated %}
+                            {% if not request.user.joiner.image == '' %}
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ request.user.joiner.image.url }}" class="img-responsive img-circle" style="max-width: 40px; max-height:40px; float: left; display: inline; text-align:center;"><b class="caret"></b></a>
+                            {% else %}
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAhRsMOMIvyfi-rD07o9Fa6DzkaeahYPqYu_KWfNtW1ShsxGxa" class="img-responsive img-circle" style="max-width: 40px; max-height:40px; float: left; display: inline; text-align:center;"><b class="caret"></b></a>
+                            {% endif %}
+
+                            {% else %}
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAhRsMOMIvyfi-rD07o9Fa6DzkaeahYPqYu_KWfNtW1ShsxGxa" class="img-responsive img-circle" style="max-width: 40px; max-height:40px; float: left; display: inline; text-align:center;"><b class="caret"></b></a>
+                            {% endif %}
+                            
+                        
+                                <ul class="dropdown-menu">
+                                    {% if request.user.is_authenticated %}
+                                    <!-- <li style="padding-bottom: 20px;"><a href="#">Report Forum<i class="fa fa-bullhorn" style="float: right;"></i></a></li>
+                                    <li style="padding-bottom: 20px;"><a href="#">Share<i class="fa fa-share-alt" style="float: right;"></i></a></li> -->
+                                    <li style="padding-bottom: 20px;"><a href="{% url 'user_mgr:profile' request.user.username %}">Profile<i class="fa fa-edit" style="float: right;"></i></a></li>
+                                    <li style="padding-bottom: 20px;"><a href="{% url 'user_mgr:logout' %}">Log Out<i class="fa fa-share" style="float: right;"></i></a></li>
+
+                                    {% else %}
+                                    <li style="padding-bottom: 20px;"><a href="{% url 'user_mgr:signUp' %}">SignUp<i class="fa fa-edit" style="float: right;"></i></a></li>
+                                    <li style="padding-bottom: 20px;"><a href="{% url 'user_mgr:login' %}">SignIn<i class="fa fa-edit" style="float: right;"></i></a></li>
+                                    
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </nav>
+
+        <!-- second nav -->
+        <div class="container nav2">
+            <nav class="navbar">
+              <ul class="nav navbar-nav">
+                <li class="active w-600"><a href="{% url 'postApp:index' %}">ALL</a></li>
+                <li class="act w-600"><a href="{% url 'postApp:health' %}">HEALTH</a></li>
+                <li class="act w-600"><a href="{% url 'postApp:fintech' %}">FINTECH</a></li>
+                <li class="act w-600"><a href="{% url 'postApp:agro' %}">AGRO</a></li>
+                <li class="act w-600"><a href="{% url 'postApp:education' %}">EDUCATION</a></li>
+                <li class="act w-600"><a href="{% url 'postApp:ecommerce' %}">E-COMMERCE</a></li>
+                <li class="act w-600"><a href="{% url 'postApp:virtual' %}">VIRTUAL REALITY</a></li>
+                <li class="act w-600"><a href="{% url 'postApp:artificial_i' %}">ARTIFICIAL INTELLIGENCE</a></li>
+                
+              </ul>
+            </nav>
+        </div>
+        
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="col-md-2 col-xs-6 p-l-0">
+                <div class="dropdown">
+                  <button class="btn bg-red c-white dropdown-toggle" type="button" data-toggle="dropdown">Create a Topic
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    <li><a class="btn" href="{% url 'postApp:get_post_page' %}">Create a Post</a></li>
+                    <li class="divider"></li>
+                    <li><a class="btn" href="{% url 'postApp:get_poll_page' %}">Create a Poll</a></li>
+                  </ul>
+                </div>
+            </div>
+
+            
+            <div class="col-md-8"></div>
+            <div class="col-md-2 col-xs-6">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">All Categories
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    <li class="active w-600"><a href="{% url 'postApp:index' %}">ALL</a></li>
+                    <li class="act w-600"><a href="{% url 'postApp:health' %}">HEALTH</a></li>
+                    <li class="act w-600"><a href="{% url 'postApp:fintech' %}">FINTECH</a></li>
+                    <li class="act w-600"><a href="{% url 'postApp:agro' %}">AGRO</a></li>
+                    <li class="act w-600"><a href="{% url 'postApp:education' %}">EDUCATION</a></li>
+                    <li class="act w-600"><a href="{% url 'postApp:ecommerce' %}">E-COMMERCE</a></li>
+                    <li class="act w-600"><a href="{% url 'postApp:virtual' %}">VIRTUAL REALITY</a></li>
+                    <li class="act w-600"><a href="{% url 'postApp:artificial_i' %}">ARTIFICIAL INTELLIGENCE</a></li>
+                  </ul>
+                </div>
+                </li>
+              </ul>
+            </div>
+        </div>
+        <div class="container">
+            <hr>
+        </div>
+        
+    </section>
+
+   
+
+
+
+
+
+     {% block content %} 
+
+    
+
+   {% endblock content %}
+
+   {% block edit_modal %} 
+
+    
+
+   {% endblock edit_modal %} 
+
+
+   {% block extra_scripts %} 
+
+    
+
+   {% endblock extra_scripts %} 
+
+   
+
+
+
+<script src="{% static 'postApp/assets/js/jquery-3.1.1.min.js' %}"></script>
+
+<script src="{% static 'postApp/assets/js/bootstrap.min.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'postApp/assets/js/main.js' %}"></script>
+
+
+<script type="text/javascript">
+
+        app.imageHandler();
+        apps.imageHandler();
+        appz.imageHandler();
+
+
+        // scroll to top functions
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Chrome, Safari and Opera 
+            document.documentElement.scrollTop = 0; // For IE and Firefox
+        }
+        function myClicked(){
+            document.getElementById('open').style.display ="block";
+        }
+        function myRemove(){
+            document.getElementById('open').style.display ="none";
+     
+        }
+        function myMessage(){
+            $('#edit').modal("hide");
+            var change = document.getElementById('replace').textContent;
+            var msg = document.getElementById('msgs');
+            msg.innerHTML = change.text;
+            msg.textContent = change;
+
+
+        }
+    </script>
+
+<!-- Searcch ajax -->
+<script type="text/javascript">
+        $(function(){
+
+        $('#search').keyup(function() {
+    
+        $.ajax({
+            type: "POST",
+            url: "{% url 'postApp:search' %}",
+            data: { 
+                'search_text' : $('#search').val(),
+                'csrfmiddlewaretoken' : $("input[name=csrfmiddlewaretoken]").val()
+            },
+            success: searchSuccess,
+            dataType: 'html'
+        });
+        
+    });
+
+});
+
+function searchSuccess(data, textStatus, jqXHR)
+{
+    $('#search-results').html(data);
+}
+</script>
+
+
+
+ <!-- <script type="text/javascript">$('[data-toggle="popover"]').popover();</script> -->
+
+
+
+    
+    <script type="text/javascript">
+
+    
+        $("[data-toggle=popover]").popover({
+    html: true, 
+    content: function() {
+          return $('#popover-content').html();
+        }
+});
+
+
+        app.imageHandler();
+        // apps.imagesHandler();
+        // app2.imageHandler();
+
+
+        // scroll to top functions
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Chrome, Safari and Opera 
+            document.documentElement.scrollTop = 0; // For IE and Firefox
+        }
+
+    </script>
+</body>
+</html>

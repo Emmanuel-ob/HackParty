@@ -1,0 +1,44 @@
+{% extends 'user_mgr/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Signup Page{% endblock title %}
+
+{% block content %}
+
+<!-- section log in -->
+<section id="log">
+   
+    <div class="row">
+        <div class="container">
+            <div class="col-md-3">
+                
+            </div>
+            {% if messages %}
+	           {% for msg in messages %}
+	              <p class="bg bg-success">{{msg}}</p>
+	           {% endfor %}
+	        {% endif %}
+	        <h4>Your confirmation link is invalid. Be sure that you have filled the HackParty signup form before, if not click the signup button.</h4>
+            <a class="btn btn-inverse" id="btnd" style="margin-top: 10px; background-color: #d9534f; color: white;" href="{% url 'user_mgr:signUp'%}">SignUp</a>
+
+            <form method="post" action="{% url 'user_mgr:resend_link'%}">
+                <h4>If have filled the signup form before then: </h4>
+                <h4>Enter your email address to get a new confirmation link</h4>
+                {% csrf_token %}
+                <div class="input-group">
+                         
+                   <input type="email" class="form-control" name="email" maxlength="" required="" placeholder="email" style="margin-bottom: 10px;">
+                    <div class="input-group-btn">
+                      <button class="btn btn-default btn-md" type="" style="margin-bottom: 10px;">
+                        <i class="fa fa-lock"></i>
+                      </button>
+                    </div>
+                  </div>
+                <button type="submit" class="btn btn-inverse" id="btnd" style="margin-top: 10px; background-color: #d9534f; color: white;">Resend Link</button>
+            </form>
+        </div>                                  
+    </div>
+</section>
+<!-- end of log in -->
+
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends 'user_mgr/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Signup Page{% endblock title %}
+
+{% block content %}
+
+<!-- section log in -->
+<section id="log">
+   
+    <div class="row">
+        <div class="container">
+            <div class="col-md-3">
+                
+            </div>
+            {% if messages %}
+	           {% for msg in messages %}
+	              <p class="bg bg-success">{{msg}}</p>
+	           {% endfor %}
+	        {% endif %}
+	        <h4>Thank you for signing up <a href="">{{username}}</a>. Check your email for a confirmation link, if there is any concern contact admin.
+        </div>                                  
+    </div>
+</section>
+<!-- end of log in -->
+
+{% endblock content %}

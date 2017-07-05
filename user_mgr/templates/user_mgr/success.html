@@ -1,0 +1,78 @@
+{% extends 'user_mgr/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Signup Page{% endblock title %}
+
+{% block content %}
+
+<!-- section log in -->
+<section id="log">
+   
+    <div class="row">
+        <div class="container">
+            <div class="col-md-3">
+                
+            </div>
+            {% if messages %}
+	           {% for msg in messages %}
+	              <p class="bg bg-success">{{msg}}</p>
+	           {% endfor %}
+	        {% endif %}
+	        <h4>Thank you for signing up <a href="">{{username}},</a> login to your email to confirm your HackParty account.</h4>
+        </div>                                  
+    </div>
+</section>
+<!-- end of log in -->
+
+{% endblock content %}
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,700|Roboto" rel="stylesheet">
+    <title>Success#(##$#</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <center>
+                    <h2 class="text-center" style="padding-top: 15px; font-family: roboto; color: green;">Your <b style="color: #43e97b; font-family: oxygen; light"><b style="color: red; font-size: 1.8em;">H</b>ack's</b> Success</h2>
+                    <h5 class="text-center" style="padding-top: 8px; line-height: 1.3em;">You hve successfully entered the Party Your E-mail ID is <a href="#">https://hackparty.io/forum/XefRger45RteWxgyz</a></h5>
+                    <img src="https://www.shareicon.net/download/2016/08/18/810020_email_512x512.png" class="img-responsive" style="height: 20%; width: 20%;">
+                </center>
+                <center>
+                    <button class="btn  btn-success" style="border-radius: 50px; padding: 7px 30px; margin-top: 15px; background: linear-gradient(to right, #d9534f 47%, #5cb85c 45%); border: none; outline: none;">Lets <b>Party</b></button><br><br>
+                </center>
+            
+        
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div><br><br>
+        <div style="position: fixed; margin-top: px; clear: both;">
+            <center>
+                <img src="http://www.30hands.net/images/main_site/RaisedHands.png" class="img-responsive" style="float: left;">
+                <img src="http://www.30hands.net/images/main_site/RaisedHands.png" class="img-responsive" style="float: right;">
+                <img src="http://www.30hands.net/images/main_site/RaisedHands.png" class="img-responsive" style="float: right;">
+            </center>
+        </div>
+    </div>
+</body>
+
+</html> -->
+ 
+
+
+                        

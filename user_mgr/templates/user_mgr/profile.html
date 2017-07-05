@@ -1,0 +1,417 @@
+
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="{% static 'postApp/assets/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'postApp/assets/css/main.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'postApp/assets/css/profile.css' %}">
+</head>
+<body>
+  <!-- bounce -->
+  
+   <header>
+    <nav class="navbar navbar-default bg-white bs" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="" href="{% url 'postApp:index' %}"><img src="{% static 'postApp/assets/img/imgs/hack.PNG' %}"></a>
+        </div>
+    
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse m-t-10">
+          <div class="col-md-2">
+            
+          </div>
+          <div class="col-md-4" >
+            <!-- <form class="navbar-form ">
+              <div class="input-group">
+                <input type="text" class="form-control width-350 mwidth-100p" placeholder="Enter your search">
+                <div class="input-group-btn">
+                  <button class="btn bg-dark c-white" type="submit">Search
+                     <i class="glyphicon glyphicon-search"></i>
+                  </button>
+                </div>
+              </div>
+            </form> -->
+          </div>
+          
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+            
+              <div class="img">
+              {% if not profile.image == '' %}
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ profile.image.url }}" class="img-responsive img-circle" style="max-width: 40px; max-height:40px; float: left; display: inline; text-align:center;"><b class="caret"></b></a>
+              {% else %}
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAhRsMOMIvyfi-rD07o9Fa6DzkaeahYPqYu_KWfNtW1ShsxGxa" class="img-responsive img-circle" style="max-width: 40px; max-height:40px; float: left; display: inline; text-align:center;"><b class="caret"></b></a>
+              {% endif %}
+            
+                <ul class="dropdown-menu">
+                  {% if request.user.is_authenticated %}
+                  <!-- <li style="padding-bottom: 20px;"><a href="#">Forum<i class="fa fa-bullhorn" style="float: right;"></i></a></li> -->
+                 <!--  <li style="padding-bottom: 20px;"><a href="#">Share<i class="fa fa-share-alt" style="float: right;"></i></a></li> -->
+                  <li style="padding-bottom: 20px;"><a href="{% url 'postApp:index' %}"> Forum<i class="fa fa-edit" style="float: right;"></i></a></li>
+                  <li style="padding-bottom: 20px;"><a href="{% url 'user_mgr:logout' %}">Log Out<i class="fa fa-share" style="float: right;"></i></a></li>
+
+                  {% else %}
+                  <li style="padding-bottom: 20px;"><a href="{% url 'user_mgr:signUp' %}">SignUp<i class="fa fa-edit" style="float: right;"></i></a></li>
+                  <li style="padding-bottom: 20px;"><a href="{% url 'user_mgr:login' %}">SignIn<i class="fa fa-edit" style="float: right;"></i></a></li>
+                  
+                  {% endif %}
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </nav>
+
+   
+    
+  </header>
+ <section>
+   
+    
+  <div class="container">
+          {% if messages %}
+               {% for msg in messages %}
+                  <p class="bg bg-success">{{msg}}</p>
+               {% endfor %}
+          {% endif %}
+    <div class="row">
+       <div class="">
+         <div class="p-b-10">
+           <h3 class="">User Profile</h3>
+           <p class="">Add Profile Picture</p>
+           <div class="">
+             <div class="picture">
+                   {% if profile.image %}
+                       <img src="{{ profile.image.url }}"
+                    class="picture_src" id="picture_preview" alt="" >
+                    {% else %}
+                       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAhRsMOMIvyfi-rD07o9Fa6DzkaeahYPqYu_KWfNtW1ShsxGxa"
+                    class="picture_src" id="picture_preview" alt="" >
+                    {% endif %}
+                    
+                  <!-- <input class="img_container" type="file" id="upload" name="file"> -->
+                  <center>
+                    <!-- <button class="btn btn-default btn-md" id="buttons" style="border-radius: 1px; padding: 7px 40px; margin-top: 7px; background-color: #EE2824; color: white; margin-left: 35px;">Upload</button>
+ -->
+                  </center>
+              </div>
+            </div>
+          </div>  
+          
+            <div class="">
+
+            <div class="clearfix"></div>
+              <div class="m-t-62">
+                <div class="row">
+                    <div class=" m-t-150">
+                    <div>
+                      <div class="col-md-2 col-xs-3" style="border-bottom: 1px solid;">
+                        Details
+                      </div>
+                      <div class="col-md-9 col-xs-8 text-center" style="border-bottom: 1px solid; margin-left: 10px;">
+                        Info
+                      </div>
+                    </div>
+                      <a class="btn m-l-10 m-t-10 pull-right mm-r-26 " style="background-color: #EE2824; color: white; margin-right: 90px;" data-toggle="modal" href='#modal-id'>Edit Profile</a>
+                      <!-- tabs -->
+                      <div class="tabbable tabs-left">
+                        <ul class="nav nav-tabs">
+                          <li class="active"><a href="#services" data-toggle="tab">My Info</a></li>
+                          <li><a href="#contact" data-toggle="tab">Notification</a></li>
+                        </ul>
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="services"> 
+                            <div class=""><br>
+                              <p style="margin-top: 10px;" class="mm-t-0">My Info</p>
+
+
+                              <div class="container">
+                              <div class="row">
+                              <div class="col-md-2 col-xs-5"></div>
+                              <div class="col-md-10 col-xs-7 mp-r-0 mp-l-0 mf-11">
+
+                                <div class="row">
+                                  <div class="col-md-2 col-xs-3">
+                                    <p>Name:</p>
+                                  </div>
+                                  <div class="col-md-10 col-xs-9">
+                                    <p>{{ profile.user.get_full_name|title }}</p>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-2 col-xs-3">
+                                    <p>User Name:</p>
+                                  </div>
+                                  <div class="col-md-10 col-xs-9">
+                                    <p>{{ profile.user.username }}</p>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-2 col-xs-3">
+                                    <p>Phone:</p>
+                                  </div>
+                                  <div class="col-md-10 col-xs-9">
+                                    <p>{{ profile.phoneNumber }}</p>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-2 col-xs-3">
+                                    <p>DOB:</p>
+                                  </div>
+                                  <div class="col-md-10 col-xs-9">
+                                    <p>{{ profile.dob }}</p>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-2 col-xs-3">
+                                    <p>Address:</p>
+                                  </div>
+                                  <div class="col-md-6 col-xs-9 mp-r-0">
+                                    <p>{{ profile.address }}</p>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-2 col-xs-3">
+                                    <p>State:</p>
+                                  </div>
+                                  <div class="col-md-10 col-xs-9">
+                                    <p>{{ profile.state }}</p>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-2 col-xs-3">
+                                    <p>Country:</p>
+                                  </div>
+                                  <div class="col-md-10 col-xs-9">
+                                    <p>{{ profile.country }}</p>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-2 col-xs-3">
+                                    <p>gitUrl:</p>
+                                  </div>
+                                  <div class="col-md-10 col-xs-9">
+                                    <p>{{ profile.git_url }}</p>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-2 col-xs-3">
+                                    <p>Stack:</p>
+                                  </div>
+                                  <div class="col-md-10 col-xs-9">
+                                    <p>{{ profile.stack }}</p>
+                                  </div>
+                                </div>
+                              </div>  
+                              </div>
+                              </div>
+
+                            </div>
+                          </div>
+                        
+                          <div class="tab-pane" id="contact"> 
+                             <div class=""><br>
+                              <p style="margin-top: 10px;">Notification</p>
+                              <p class="mf-11 mm-l-121">deserve editor attention because they are the most important for an encyclopedia to have, as determined by the community of participating editors. They may also be of interest to readers as an alternative to lists of overview articles.</p>                 
+                             </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /tabs -->
+                    </div>
+                  </div>
+            </div>
+          </div>
+       </div>
+
+       <!-- modal -->
+
+        <div class="modal fade" id="modal-id">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Edit Personal Information</h4>
+              </div>
+              <div class="modal-body">
+                <form method="post" enctype="multipart/form-data" action="{% url 'user_mgr:profile' request.user.username %}">
+                 {% csrf_token %}
+                  <div class="form-group m-b-0">
+                      <label>Phone Number</label>
+                        <!-- <input type="text" class="form-control" placeholder="Phone"> -->
+                        {{ profile_form.phone_number }}
+                  </div>
+
+                  <div class="form-group m-b-0">
+                    <label>Date of Birth</label>
+                      <!-- <input type="text" class="form-control" placeholder="02-23-1999" maxlength="12"> -->
+                      {{ profile_form.date_of_birth }}
+                  </div>
+                  <div class="form-group m-b-0">
+                    <label>Gender</label>
+                       <select name="gender"  class="form-control" required="">
+                         <option value=""></option>
+                         <option value="Male">Male</option>
+                         <option value="Female">Female</option>
+                       </select>
+                      <!-- <label class="radio-inline">
+                        <input type="radio" name="gender" value="Male">Male
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="gender" value="Female">Female
+                      </label> -->
+                  </div>
+                  
+                  <div class="form-group m-b-0">
+                    <label>Address</label>
+                     <!--  <textarea name="" id="input" class="form-control" rows="3" placeholder="address"></textarea> -->
+                     {{ profile_form.address }}
+                  </div>
+                   
+                  <div class="form-group m-b-0">
+                    <label>State</label>
+                        <!-- <input type="text" class="form-control" placeholder="State">
+                    </div> -->
+                    {{ profile_form.state }}
+                  </div>
+
+                  <div class="form-group m-b-0">
+                    <label>Country</label>
+                        <!-- <input type="text" class="form-control" placeholder="Country"> -->
+                        {{ profile_form.country }}
+                  </div>
+
+                  <!-- <div class="form-group m-b-0">
+                    <div class="input-group" style="width: 269px;">
+                        <label>Profession</label>
+                        <input type="text" class="form-control" placeholder="Profession">
+                    </div>
+                  </div> -->
+
+                  <div class="form-group m-b-0">
+                    <label>Description</label>
+                      <!-- <textarea name="" id="input" class="form-control" rows="3" placeholder="description"></textarea> -->
+                      {{ profile_form.description }}
+                  </div>
+
+                  <div class="form-group m-b-0">
+                    <label>gitUrl</label>
+                        <!-- <input type="text" class="form-control" placeholder="gitUrl"> -->
+                        {{ profile_form.git_url }}
+                  </div>
+
+                  <div class="form-group m-b-0">
+                    <label>Stack</label>
+                        <!-- <input type="text" class="form-control" placeholder="Stack"> -->
+                        {{ profile_form.stack }}
+                  </div>
+                  <div class="form-group m-b-0">
+                    <label>Image</label>
+                        <input type="file" class="form-control" placeholder="" name="image"> 
+                  </div>
+                   <span class="input-group-btn p-l-242 p-t-20">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn m-l-10" style="background-color: #EE2824; color: white;">Update Profile</button>
+                    
+                   </span>
+                   
+                </form>
+              </div>
+              <div class="modal-footer">
+                
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- <div class="col-md-4">
+     
+        
+        
+      </div> -->
+    </div>
+  </div>
+ </section>
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+<script src="{% static 'postApp/assets/js/jquery-3.1.1.min.js' %}"></script>
+
+<script src="{% static 'postApp/assets/js/bootstrap.min.js' %}"></script>
+
+
+
+ <!-- <script type="text/javascript">$('[data-toggle="popover"]').popover();</script> -->
+
+
+<script type="text/javascript" src="{% static 'postApp/assets/js/main.js' %}"></script>
+    <script type="text/javascript">
+
+     app.imageHandler();
+
+//         $("[data-toggle=popover]").popover({
+//     html: true, 
+//     content: function() {
+//           return $('#popover-content').html();
+//         }
+// });
+
+
+        // scroll to top functions
+        // When the user scrolls down 20px from the top of the document, show the button
+        // window.onscroll = function() {scrollFunction()};
+
+        // function scrollFunction() {
+        //     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        //         document.getElementById("myBtn").style.display = "block";
+        //     } else {
+        //         document.getElementById("myBtn").style.display = "none";
+        //     }
+        // }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Chrome, Safari and Opera 
+            document.documentElement.scrollTop = 0; // For IE and Firefox
+        }
+
+    </script>
+</body>
+</html>

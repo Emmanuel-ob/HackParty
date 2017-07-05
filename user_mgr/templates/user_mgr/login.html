@@ -1,0 +1,105 @@
+{% extends 'user_mgr/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Login Page{% endblock title %}
+
+{% block content %}
+
+<!-- section log in -->
+<section id="log">
+   
+    <div class="row">
+          {% if messages %}
+               {% for msg in messages %}
+                  <p class="bg bg-success">{{msg}}</p>
+               {% endfor %}
+          {% endif %}
+         <div class="container">
+            <div class="col-md-3">
+                
+            </div>
+            <div class="col-md-6">
+                <div class="jumbotron">
+                    <div class="header">
+                       <h2 class="text-center headers animatedSlideInLeft">Login To Forum</h2>
+                    </div>
+                    <div class="form-group">
+                    <form method="post" action="/user/signin/">
+                       {% csrf_token %}
+                       <input type="hidden" name="next" value="{{ request.GET.next }}">
+                        <div class="container">
+                        
+                        <label class="c-l-b">Email Address</label>
+                        
+                          <div class="input-group">
+                            {{ login_form.email }}
+                            <!-- <input type="" class="form-control" placeholder="Email Address"> -->
+                            <div class="input-group-btn">
+                              <button class="btn btn-inverse btn-md" type="">
+                                <i class="fa fa-envelope"></i>
+                              </button>
+                            </div>
+                          </div>
+                        
+                        <label class="c-l-b">Password</label>
+                        
+                          <div class="input-group">
+                            {{ login_form.password }}
+                            <!-- <input type="" class="form-control" placeholder="Password"> -->
+                            <div class="input-group-btn">
+                              <button class="btn btn-inverse btn-md" type="">
+                                <i class="fa fa-lock"></i>
+                              </button>
+                            </div>
+                          </div>
+                       
+                        </div>
+                    
+                    <section class="container">
+                        <h5 class="" style="float: left;"><input type="checkbox" name="" class="control filled-in">&nbsp;Remember Me</h5>
+                        <h5 class="" style="float: right;">Fogot Password ?</h5>
+                    </section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+
+                            </div>
+
+                            <div class="col-md-4">
+                            <center>
+                                <button class="btn btn-danger btn-justified">Login</button>
+                               
+                            </center>
+                                <h5 class="text-center" style="padding-bottom: 7px;">Not A user?.<a href="{% url 'user_mgr:signUp' %}" style="color: red;">Sign Up.</a></h5>
+                                <h5 class="text-center"><strong>...Or Log in With...</strong></h5>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                        </div>
+                    </div>
+                  </form>
+                  </div>
+                <div class="container">
+                    <center>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="#" class="btn btn-primary" id="prime"><i class="fa fa-facebook fa-1x">&nbsp;&nbsp;</i>Facebook</a>
+                            </div>
+                            <div class="col-md-6">
+                                 <a href="#" class="btn btn-info" id="prime"><i class="fa fa-twitter fa-1x">&nbsp;&nbsp;</i>Twitter</a>
+                            </div>
+                    </center>
+                </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>                                  
+    </div>
+</section>
+<!-- end of log in -->
+
+
+{% endblock content %}

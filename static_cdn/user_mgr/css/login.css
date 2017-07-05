@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+
+@font-face{
+	font-family: roboto;
+	src:url(./fonts/roboto/Roboto-Medium.woff);
+}
+h5{
+	font-size: 15px;
+	font-family: raleway;
+}
+#hack{
+	color: red;
+	font-weight: 400;
+}
+#party{
+	margin-left: .6em;
+	font-weight: 400;
+
+}
+.navbar .navbar-brand {
+    position: relative;
+    height: 60px;
+    line-height: 25px;
+    color: #333;
+    font-family: roboto;
+    font-size: 28px;
+}
+.navbar .navbar-brand:hover {
+    position: relative;
+    height: 60px;
+    line-height: 25px;
+    color: #333;
+    font-family: roboto;
+    font-size: 28px;
+}
+.navbar .navbar-brand:focus {
+    position: relative;
+    height: 60px;
+    line-height: 25px;
+    color: #333;
+    font-family: roboto;
+    font-size: 28px;
+}
+.navbar .navbar-brand:visited {
+    position: relative;
+    height: 60px;
+    line-height: 25px;
+    color: #333;
+    font-family: roboto;
+    font-size: 28px;
+}
+#log{
+	padding: 4px 40px;
+}
+.headers {
+    font-size: 23px;
+    padding-top:1.5em;
+    font-family: raleway;
+}
+.header {
+    /* float: left; */
+    margin-top: -10em;
+    padding-bottom: 80px;
+}
+.btn-default{
+	background-color: white;
+	border: transparent;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    margin-top: -40px;
+}
+a.btn.btn-danger.btn-justify {
+    padding: 4px 70px;
+    
+    margin: 0px auto;
+}
+.btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+    padding: 7px 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.43);
+    font-size: 14px;
+    border-radius: 1px;
+    width: 100%;
+    border-color: #d43f3a;
+}
+#prime {
+    padding: 8px 60px;
+    border-radius: 6px;
+    margin-top: 8px;
+}
+.c-l-b{
+	color: black;
+	font-family: raleway;
+}
+.container .jumbotron, .container-fluid .jumbotron {
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top: 12px;
+    border-top: 70px solid #ccc;
+}
+#btnd{
+	padding: 7px 60px;
+}
+#btnd:hover{
+	background: red;
+}
+.navbar{
+	background-color: transparent;
+	border: transparent;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #335d82;
+    border-color: #2e6da4;
+    font-family: raleway;
+    width: 100%;
+}
+.btn-info {
+    color: #fff;
+    background-color: #2fa3c5;
+    width: 100%;
+    border-color: #46b8da;
+    font-family: raleway;
+}

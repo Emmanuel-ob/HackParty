@@ -1,0 +1,8 @@
+
+
+{% autoescape off %}
+Thank you for signing up on the hackparty platform {{ username }}. 
+Please click on the link below to confirm your account,
+
+http://{{ domain }}{% url 'user_mgr:confirmation' unique_token=unique_token %}
+{% endautoescape %}

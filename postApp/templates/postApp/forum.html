@@ -1,0 +1,331 @@
+{% extends 'postApp/base.html' %}
+{% load staticfiles %}
+{% load custom_template_filters %}
+{% block title %}General{% endblock title %}
+
+
+{% block content %} 
+
+   
+
+
+     <section>
+          {% if messages %}
+               {% for msg in messages %}
+                  <p class="bg bg-success">{{msg}}</p>
+               {% endfor %}
+          {% endif %}
+        <div class="container">
+            <div class="">
+                <p>All Topics</p>
+            </div>
+            {% for post in posts %}
+
+                {% if post.post_type == 'post' %}
+            <div class="p-5 bg-gray bd-5 width-100p">
+                <div class="row">
+                    <div class="col-md-2 col-xs-2 mp-r-0 mwidth-70">
+                        {% if post.image %}
+                           <img src="{{ post.image.url }}" class="image img-roundedc img-responsive bd-10 h-123 mh-100p" height="123" width="100%">
+                        {% else %}
+                           <img src="{% static 'postApp/assets/img/imgs/Tech2.jpg' %}" class="image img-roundedc img-responsive bd-10 h-123 mh-100p" height="123" width="100%">
+                        {% endif %}
+                    </div>
+
+                    <div class="col-md-8 col-xs-8 mp-l-0 line">
+                        <a href="{% url 'postApp:fullpost' post.id %}"><p class="f-24 w-500 m-b-0 mf-12 mm-t-0 mw-700 mp-l-5">{{ post.title|capfirst }}</p></a>
+                        <span class="f-12 mf-11 mp-l-5" style="display: block; text-overflow: ellipsis; width: 600px; overflow: hidden; white-space: nowrap;">{{ post.body|capfirst }}</span>
+                        <div class="row mm-t-5 m-t-20">
+                            <div class="col-md-2 col-xs-3 mp-l-0 mp-r-0 mwidth-17p">
+                                 {% if not post.posted_by.joiner.image == '' %}
+                                   <img src="{{ post.posted_by.joiner.image.url }}"  class="img-circle bd-30 img-responsive" height="50" width="50">
+                                {% else %}
+                                   <img src="{% static 'postApp/assets/img/imgs/robotic.jpg' %}" class="img-circle bd-30 img-responsive" height="50" width="50">
+                                {% endif %}
+                            </div>
+                            <div class="col-md-10 col-xs-9 m-l-_70 mm-l-0 mp-l-5 mp-r-0">
+                                <p class="m-b-0 f-12 mf-10">{{ post.date_posted|date }} <span class="c-blue">{{ post.posted_by.get_full_name|title }}</span></p>
+                                <p>  
+                                <a href="" target_post_id="{{ post.id }}" class="like_button" style="cursor: pointer;"><span class="c-red m-l-58 mm-l-0 f-12 mf-10" id="like_count_{{ post.id }}">{{ post.like_set.count }} Likes</span></a>
+
+                                <a href="" point_post_id="{{ post.id }}" class="dislike_button" style="cursor: pointer;"><span class=" p-l-15 f-12 mf-10 mp-l-0"  id="dislike_count_{{ post.id }}">{{ post.dislike_set.count }} Dislike</span></a>
+
+                                <span class=" p-l-20 f-12 mf-10 mp-l-0"><a href="{% url 'postApp:fullpost' post.id %}">{{ post.comment_set.count }} Comments</a></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-xs-1 mp-l-0">
+                        <p class="c-red text-right fb p-r-10">{{ post.tag.tag_name|capfirst }}</p>
+                        <div class="row m-l-50">
+                            <div class="col-md-4 col-xs-4 fb" style="width: 20.333%;">
+                                <a href="#"><img src="{% static 'postApp/assets/img/icons/facebook.png' %}" class=" img-circle bd-20" height="20" width="20"></a>
+                            </div>
+                            <div class="col-md-4 col-xs-4 tw" style="width: 20.333%;">
+                                <a href="#"><img src="{% static 'postApp/assets/img/icons/twitter.png' %}" class="img-circle bd-20" height="20" width="20"></a>
+                            </div>
+                            <div class="col-md-4 col-xs-4 mm-l-_50 m-t-15" style="width: 20.333%;">
+                                <ul class="p-l-0">
+                                    <li class="dropup">
+                                        <div class="img">
+                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{% static 'postApp/assets/img/icons/menu.png' %}" class="img-responsive img-circle" style="max-width: 40px; max-height:40px; float: left; display: inline; text-align:center;"></a>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <div>
+                                                      <!-- <label>
+                                                        <input type="checkbox" class="option-input checkbox" />
+                                                        Bookmark
+                                                      </label> -->
+                                                  </div>
+                                                </li>
+                                                <!-- <li><a  href=''> Share post</a></li>
+                                                <li><a href=""> Report</a></li> -->
+                                                
+                                                {% if post.posted_by == request.user %}
+                                                <li><a data-toggle="modal" href="" class="edit_post_handler" post_id="{{ post.id }}" post_title="{{ post.title }}" post_body="{{ post.body }}" data-target="#edit"> Edit post</a></li>
+                                                <li><a  href="{% url 'postApp:deletePost' post.id %}"> Delete post</a></li>
+                                                
+                                                {% endif %}
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul> 
+                            </div>
+                        </div><br>
+                        
+                        <div class="fb">
+                            <span class=" p-l-15 ">0 shares.</span>
+                            
+                            <span class=" p-l-20"> 0 views</span>
+                        </div>      
+                    </div>
+                </div>
+            </div><br>
+
+             
+
+             {% elif post.post_type == 'poll' %}
+            <!-- for poll -->
+            <div class="p-5 bg-gray bd-5 width-100p">
+                <div class="row">
+                    <div class="col-md-2 col-xs-2 mp-r-0 mwidth-70">
+                        
+                        {% if post.image %}
+                           <img src="{{ post.image.url }}" class="image img-roundedc img-responsive bd-10 h-123 mh-100p" height="123" width="100%">
+                        {% else %}
+                           <img src="{% static 'postApp/assets/img/imgs/Tech2.jpg' %}" class="image img-roundedc img-responsive bd-10 h-123 mh-100p" height="123" width="100%">
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6 col-xs-8 mp-l-0 line">
+                        <p class="f-24 w-500 m-b-0 mf-12 mm-t-0 mw-700 mp-l-5">{{ post.title|capfirst }}</p>
+                        <span class="f-12 mf-11 mp-l-5">{{ post.body|capfirst }}</span>
+                        <div class="row mm-t-5 m-t-20">
+                            <div class="col-md-2 col-xs-2 mp-l-0 mp-r-0 mwidth-17p">
+                                
+                                {% if not post.posted_by.joiner.image == '' %}
+                                   <img src="{{ post.posted_by.joiner.image.url }}" class="img-circle bd-30 img-responsive" height="50" width="50">
+                                {% else %}
+                                   <img src="{% static 'postApp/assets/img/imgs/robotic.jpg' %}" class="img-circle bd-30 img-responsive" height="50" width="50">
+                                {% endif %}
+                            </div>
+                            <div class="col-md-10 col-xs-9 m-l-_55 mm-l-0 mp-l-5 mp-r-0">
+                                <p class="m-b-0 f-12 mf-10 p-l-10">{{ post.date_posted|date }} <span class="c-blue">{{ post.posted_by.get_full_name|title }}</span></p>
+                                <!-- p>  
+                                <span class="c-red m-l-58 mm-l-0 f-12">14 Likes</span>
+                                <span class=" p-l-15 f-12">3 Dislike</span>
+                                <span class=" p-l-20 f-12"> 3 Comments</span></p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12 mm-t-5">
+                        <p class="c-red text-right m-b-0 p-r-10 fb">{{ post.tag.tag_name|capfirst }}</p>
+                            {% for option in post.polloption_set.all %}
+                        <div class="row ">
+                            <div class="col-md-2 col-xs-1"><p class="f-10 w-600">{{ option.response }} </p></div>
+                            <div class="col-md-8 col-xs-9">
+                                <div class="progress m-b-0 " style="width: 100px;">
+                                    <div class="progress-bar bg-{{option.colour}}" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">{{ option.vote }} votes
+                                    </div>
+                                </div>
+                            </div>
+                       
+                            <div class="col-md-1 col-xs-1">
+                              <label>
+                                <a href="{% url 'postApp:vote' post.id option.id %}"><input type="button" class="option-input1 radio" name="example" style="background-color:{{option.colour}}"/></a>
+                                
+                              </label>
+                            </div>
+                         </div>
+                          {% endfor %}
+
+                        <div class="">
+                            <span class=" p-l-15 ">0 shares. </span>
+                            
+                            <span class="m-l-50">0 views</span>
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+             {% endif %}
+
+
+      {% endfor %}
+        </div><br>
+        
+
+            
+    </section>
+
+    
+
+{% endblock content %}
+
+
+{% block edit_modal %} 
+    <!-- modal for edit post -->
+               <div class="modal fade" id="edit">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title text-center">Edit a Topic</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/post/edit/" method="post" role="form" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <input type="text" name="title" id="id_post_title" value="">
+                                        <input type="hidden" name="post_id" id="post_modal_id" value="">
+                                        <input type="hidden" name="post_type" value="post">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Description</label>
+                                        <textarea name="body" id="id_post_body" class="form-control" rows="3" required="required" placeholder="Describe your post"></textarea>
+                                    </div>
+                               
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p>Tag post category</p>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <p class="pull-right">Upload image for post<span class="c-grey"> (optional)</span></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <select name="tag" id="input" class="form-control" >
+                                            <option value="">Select tag</option>
+                                            <option value="health">Health</option>
+                                            <option value="fintech">Fintech</option>
+                                            <option value="agro">Agro</option>
+                                            <option value="education">Education</option>
+                                            <option value="ecommerce">E-commerce</option>
+                                            <option value="virtual">Virtual reality</option>
+                                            <option value="ai">Artificial Intelligence</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="picture" style="float: right;">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAhRsMOMIvyfi-rD07o9Fa6DzkaeahYPqYu_KWfNtW1ShsxGxa"
+                                            class="picture_src" id="picture_preview" alt="" >
+                                        <input class="img_container" type="file" id="upload" name="image">
+                                        </div>
+                                        <!-- <span class="btn btn-success fileinput-button pull-right">
+                                            <span>Browse</span>
+
+                                        <input type="file" name="file">
+                                        </span> -->
+                                    </div>
+                                </div>
+                                     <div class="modal-footer">
+                                        <button type="button" class="no-bd bg-white c-grey" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn bg-red c-white">UPDATE</button>
+                                    </div>
+                                 </form>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div> 
+            <!-- end -->    
+{% endblock edit_modal %} 
+          
+  
+
+{% block extra_scripts %} 
+
+<script src="{% static 'postApp/assets/js/jquery-3.1.1.min.js' %}"></script>
+
+
+    <script>
+
+      $('body').on('click', '.edit_post_handler', function(){
+         
+        var current_post_id       =  $(this).attr('post_id');
+        var current_post_title    =  $(this).attr('post_title');
+        var current_post_body     =  $(this).attr('post_body');
+
+         //alert('We are here' + '-' + current_post_id + current_post_title + '-' );
+         // $(".popover").toggleClass("in");
+
+        $('#post_modal_id').val(current_post_id);
+        $('#id_post_title').val(current_post_title );
+        $('#id_post_body').val(current_post_body);
+
+      
+      });
+    </script>
+
+    <script type="text/javascript">
+        $('.like_button').click(function(){
+                //alert('Ajax is here')
+                
+                var post_id = $(this).attr('target_post_id');
+                var likes_span_id = "like_count_" + post_id;
+                var dislikes_span_id = "dislike_count_" + post_id;
+                //var msg = "this is a like button for post with id" + post_id;
+                //alert(msg);
+            $.ajax({
+                url: "{% url 'postApp:ajax_like_post' %}",
+                type: "get",
+                data: {post_Id: post_id},
+                success: function(data){
+                    $('#' + likes_span_id).html(data.post_like_count);
+                    $('#' + dislikes_span_id).html(data.post_dislike_count);
+                    //alert(data.response);
+                },
+                error: function(data){
+                    //alert('Sorry something went wrong');
+                }
+            });
+
+            });
+    </script>
+
+    <script type="text/javascript">
+        $('.dislike_button').click(function(){
+                
+                var post_id = $(this).attr('point_post_id');
+                var dislikes_span_id = "dislike_count_" + post_id;
+                var likes_span_id = "like_count_" + post_id;
+
+            $.ajax({
+                url: "{% url 'postApp:ajax_dislike_post' %}",
+                type: "get",
+                data: {post_Id: post_id},
+                success: function(data){
+                    $('#' + dislikes_span_id).html(data.post_dislike_count);
+                    $('#' + likes_span_id).html(data.post_like_count);
+                    
+                },
+                error: function(data){
+                    //alert('Sorry something went wrong');
+                }
+            });
+
+            });
+    </script>
+
+{% endblock extra_scripts %}

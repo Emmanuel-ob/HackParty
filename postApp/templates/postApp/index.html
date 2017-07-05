@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/index.css">
+</head>
+<body>
+	<!-- bounce -->
+	<button onclick="topFunction()" id="myBtn" title="Go to top" class="animated bounceInUp"><i class="fa fa-chevron-up fa-2x animated fadeInDown" style="animation-delay: 0.5s;"></i></button> 
+    <header>
+
+	<header>
+		<nav class="navbar navbar-default bg-white bs" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="" href="#"><img src="assets/img/imgs/hack.PNG"></a>
+				</div>
+		
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-ex1-collapse m-t-10">
+					<div class="col-md-2">
+						
+					</div>
+					<div class="col-md-4" >
+						<form class="navbar-form ">
+						  <div class="input-group">
+						    <input type="text" class="form-control width-350 mwidth-100p" placeholder="Enter your search">
+						    <div class="input-group-btn">
+						      <button class="btn bg-dark c-white" type="submit">Search
+						        <!-- <i class="glyphicon glyphicon-search"></i> -->
+						      </button>
+						    </div>
+						  </div>
+						</form>
+					</div>
+					
+					
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+						
+							<div class="img">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAhRsMOMIvyfi-rD07o9Fa6DzkaeahYPqYu_KWfNtW1ShsxGxa" class="img-responsive img-circle" style="max-width: 40px; max-height:40px; float: left; display: inline; text-align:center;"><b class="caret"></b></a>
+							
+						
+								<ul class="dropdown-menu">
+									<li style="padding-bottom: 20px; padding-top: 20px;"><a href="#">Settings<i class="fa fa-cogs" style="float: right;"></i></a></li>
+									<li style="padding-bottom: 20px;"><a href="#">Edit Profile<i class="fa fa-edit" style="float: right;"></i></a></li>
+									<li style="padding-bottom: 20px;"><a href="#">Report Forum<i class="fa fa-bullhorn" style="float: right;"></i></a></li>
+									<li style="padding-bottom: 20px;"><a href="#">Share<i class="fa fa-share-alt" style="float: right;"></i></a></li>
+									<li style="padding-bottom: 20px;"><a href="#">Log Out<i class="fa fa-share" style="float: right;"></i></a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div>
+		</nav>
+
+		<!-- second nav -->
+		<div class="container">
+			<nav class="navbar ">
+			  <ul class="nav navbar-nav">
+			    <li class="active w-600"><a href="#">ALL</a></li>
+			    <li class="act w-600"><a href="health.html">HEALTH</a></li>
+			    <li class="act w-600"><a href="fintech.html">FINTECH</a></li>
+			    <li class="act w-600"><a href="agro.html">AGRO</a></li>
+			    <li class="act w-600"><a href="education.html">EDUCATION</a></li>
+			    <li class="act w-600"><a href="ecommerce.html">E-COMMERCE</a></li>
+			    <li class="act w-600"><a href="virtual.html">VIRTUAL REALITY</a></li>
+			    <li class="act w-600"><a href="artificial.html">ARTIFICIAL INTELLIGENCE</a></li>
+			    <li class="dropdown m-l-60 mm-l-13">
+			    	<div class="dropdown">
+				  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">All Categories
+				  <span class="caret"></span></button>
+				  <ul class="dropdown-menu">
+				    <li><a href="#">HTML</a></li>
+				    <li><a href="#">CSS</a></li>
+				    <li><a href="#">JavaScript</a></li>
+				  </ul>
+				</div>
+			    </li>
+			  </ul>
+			</nav>
+		</div>
+		
+	</header>
+
+	<section>
+		<div class="container">
+			<div class="col-md-2">
+				<div class="dropdown">
+				  <button class="btn bg-red c-white dropdown-toggle" type="button" data-toggle="dropdown">Create a Topic
+				  <span class="caret"></span></button>
+				  <ul class="dropdown-menu">
+				    <li><a class="btn" data-toggle="modal" href='#post'>Create a Post</a></li>
+				    <li class="divider"></li>
+				    <li><a class="btn" data-toggle="modal" href='#poll'>Create a Poll</a></li>
+				  </ul>
+				</div>
+			</div>
+
+			<!-- moder for topic -->
+			<div class="modal fade" id="post">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title text-center">Create a Topic</h4>
+						</div>
+						<div class="modal-body">
+							<form action="" method="POST" role="form">
+								<div class="form-group">
+									<label for="">Title</label>
+									<input type="text" class="form-control" id="" placeholder="title">
+								</div>
+								<div class="form-group">
+									<label for="">Description</label>
+									<textarea name="" id="input" class="form-control" rows="3" required="required" placeholder="Describe your post"></textarea>
+								</div>
+							</form>
+							<div class="row">
+								<div class="col-md-6">
+									<p>Tag post category</p>
+								</div>
+								
+								<div class="col-md-6">
+									<p class="pull-right">Upload image for post<span class="c-grey"> (optional)</span></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<select name="" id="input" class="form-control" required="required">
+										<option>Select tag</option>
+										<option value="">Health</option>
+										<option value="">Fintech</option>
+										<option value="">Agro</option>
+										<option value="">Education</option>
+										<option value="">E-commerce</option>
+										<option value="">Virtual reality</option>
+										<option value="">Artificial Intelligence</option>
+									</select>
+								</div>
+								<div class="col-md-6">
+									<div class="picture" style="float: right;">
+								    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAhRsMOMIvyfi-rD07o9Fa6DzkaeahYPqYu_KWfNtW1ShsxGxa"
+								    class="picture_src" id="picture_preview" alt="" >
+									<input class="img_container" type="file" id="upload" name="file">
+									</div>
+									<!-- <span class="btn btn-success fileinput-button pull-right">
+								        <span>Browse</span>
+
+								    <input type="file" name="file">
+								    </span> -->
+								</div>
+							</div>
+						</div>
+						
+						<div class="modal-footer">
+							<button type="button" class="no-bd bg-white c-grey" data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn bg-red c-white">Create</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- moder for poll -->
+			<div class="modal fade" id="poll">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<div>
+								<h4 class="modal-title text-center">Create a Poll</h4>
+							</div>
+							
+						</div>
+						<div class="modal-body">
+							<form action="" method="POST" role="form">
+								<div class="form-group">
+									<label for="">Title</label>
+									<textarea name="" id="input" class="form-control" rows="3" required="required" placeholder="Enter poll title"></textarea>
+								</div>
+								<p>Choose poll <span>(min. 2, max. 3)</span></p>
+								<div class="row">
+									
+									<div class="col-md-10">
+										<div class="form-group">
+											<input type="text" class="form-control" id="" placeholder="Enter option">
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="radio">
+										<label id="green" style="cursor: default;">
+										  
+										</label>
+										</div>
+									</div>
+
+									<div class="col-md-10">
+										<div class="form-group">
+											<input type="text" class="form-control" id="" placeholder="Enter option">
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="radio">
+										  <label id="orange" style="cursor: default;">
+										  </label>
+										</div>
+									</div>
+
+									<div class="col-md-10">
+										<div class="form-group">
+											<input type="text" class="form-control" id="" placeholder="Enter option">
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="radio">
+										  <label id="blue" style="cursor: default;">
+										  </label>
+										</div>
+									</div>
+								</div>
+
+							</form>
+							<div class="row">
+								<div class="col-md-6">
+									<p>Tag post to category</p>
+								</div>
+								
+								<div class="col-md-6">
+									<p class="pull-right">Upload image for post<span class="c-grey"> (optional)</span></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<select name="" id="input" class="form-control" required="required">
+										<option>Select tag</option>
+										<option value="">Health</option>
+										<option value="">Fintech</option>
+										<option value="">Agro</option>
+										<option value="">Education</option>
+										<option value="">E-commerce</option>
+										<option value="">Virtual reality</option>
+										<option value="">Artificial Intelligence</option>
+									</select>
+								</div>
+								<div class="col-md-6">
+								<div class="picture" style="float: right;">
+								    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAhRsMOMIvyfi-rD07o9Fa6DzkaeahYPqYu_KWfNtW1ShsxGxa"
+								    class="picture_src" id="picture_preview1" alt="" >
+								<input class="img_container" type="file" id="upload1" name="file">
+								</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="no-bd bg-white c-grey" data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn bg-red c-white">Create</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end -->
+			<div class="col-md-8"></div>
+			<div class="col-md-2">
+				<div class="dropdown">
+				  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">All Topics
+				  <span class="caret"></span></button>
+				  <ul class="dropdown-menu">
+				    <li><a href="#">HTML</a></li>
+				    <li><a href="#">CSS</a></li>
+				    <li><a href="#">JavaScript</a></li>
+				  </ul>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<hr>
+		</div>
+		
+	</section>
+
+	<section>
+		<div class="container">
+			<div class="">
+				<p>All Topics</p>
+			</div>
+			<div class="p-5 bg-gray bd-5">
+				<div class="row">
+					<div class="col-md-2">
+						<img src="assets/img/imgs/Tech2.jpg" class="image img-roundedc img-responsive bd-10 h-123 mh-100p" height="123" width="100%">
+					</div>
+					<div class="col-md-8">
+						<a href="comment.html"><p class="f-24 w-500 m-b-0 mf-16 mm-t-10">What is the future of tech in Nigeria?</p></a>
+						<span class="f-12">Tech is really growing in nigeria and the future of tech in nigeria is very...</span>
+						<div class="row">
+							<div class="col-md-2">
+								<img src="assets/img/imgs/robotic.jpg" class="img-circle bd-30 img-responsive" height="50" width="50">
+							</div>
+							<div class="col-md-10 m-l-_70 mm-l-0">
+								<p class="m-b-0 f-12">Submitted 2 hours ago by <span class="c-blue">Adebayo Salami</span></p>
+								<p>  
+								<span class="c-red m-l-58 mm-l-0 f-12">14 Likes</span>
+	                            <span class=" p-l-15 f-12">3 Dislike</span>
+	                            <span class=" p-l-20 f-12"> 3 Comments</span></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<p class="c-red text-right">Fintech</p>
+						<div class="row">
+							<div class="col-md-4 col-xs-4">
+	                            <a href="#"><img src="assets/img/icons/facebook.png" class=" img-circle bd-20" height="20" width="20"></a>
+	                        </div>
+	                        <div class="col-md-4 col-xs-4">
+	                            <a href="#"><img src="assets/img/icons/twitter.png" class="img-circle bd-20" height="20" width="20"></a>
+	                        </div>
+	                        <div class="col-md-4 col-xs-4">
+	                            <ul class=" p-l-0">
+	                                <li><a data-placement="top" data-toggle="popover" data-title="Login" data-container="body" type="" data-html="true" id="login"><img src="assets/img/icons/menu.png" ></a></li>
+	                                <div id="popover-content" class="hide">
+	                                    <div>
+	                                        <div>
+											  <label>
+											    <input type="checkbox" class="option-input checkbox" />
+											    Bookmark
+											  </label>
+											  </div>
+
+	                                        <p class=""><a data-toggle="modal" href='#edit'> Edit post</a></p>
+
+	                                        <p class=""><a href=""> Report</a></p>
+
+	                                    </div>
+	                                </div>
+	                            </ul> 
+	                        </div>
+
+	                        <!-- mooal for edit post -->
+	                           <div class="modal fade" id="edit">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+												<h4 class="modal-title text-center">Edit a Topic</h4>
+											</div>
+											<div class="modal-body">
+												<form action="" method="POST" role="form">
+													<div class="form-group">
+														<p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+														tempor incididunt ut labore et dolore magna aliqua. </p>
+													</div>
+													<div class="form-group">
+														<label for="">Description</label>
+														<textarea name="" id="input" class="form-control" rows="3" required="required" placeholder="Describe your post"></textarea>
+													</div>
+												</form>
+												<div class="row">
+													<div class="col-md-6">
+														<p>Tag post category</p>
+													</div>
+													
+													<div class="col-md-6">
+														<p class="pull-right">Upload image for post<span class="c-grey"> (optional)</span></p>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-6">
+														<select name="" id="input" class="form-control" required="required">
+															<option>Select tag</option>
+															<option value="">Health</option>
+															<option value="">Fintech</option>
+															<option value="">Agro</option>
+															<option value="">Education</option>
+															<option value="">E-commerce</option>
+															<option value="">Virtual reality</option>
+															<option value="">Artificial Intelligence</option>
+														</select>
+													</div>
+													<div class="col-md-6">
+														<div class="picture" style="float: right;">
+														    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAhRsMOMIvyfi-rD07o9Fa6DzkaeahYPqYu_KWfNtW1ShsxGxa"
+														    class="picture_src" id="picture_preview" alt="" >
+														<input class="img_container" type="file" id="upload" name="file">
+														</div>
+														<!-- <span class="btn btn-success fileinput-button pull-right">
+													        <span>Browse</span>
+
+													    <input type="file" name="file">
+													    </span> -->
+													</div>
+												</div>
+											</div>
+											
+											<div class="modal-footer">
+												<button type="button" class="no-bd bg-white c-grey" data-dismiss="modal">Cancel</button>
+												<button type="button" class="btn bg-red c-white">Create</button>
+											</div>
+										</div>
+									</div>
+								</div>       	
+	                        <!-- end -->
+						</div><br>
+						
+                        <div class="">
+                            <span class=" p-l-15 ">4 shares.</span>
+                            <span class=" p-l-20"> 25 views</span>
+                        </div>      
+					</div>
+				</div>
+			</div><br>
+			<!-- for poll -->
+			<div class="p-5 bg-gray bd-5">
+				<div class="row">
+					<div class="col-md-2">
+						<img src="assets/img/imgs/Tech2.jpg" class="image img-roundedc img-responsive bd-10 h-123 mh-100p" height="121" width="100%">
+					</div>
+					<div class="col-md-7">
+						<a href="comment.html"><p class="f-24 w-500 m-b-0 mf-16 mm-t-10">What is the future of tech in Nigeria?</p></a>
+						<span class="f-12">Tech is really growing in nigeria and the future of tech in nigeria is very...</span>
+						<div class="row">
+							<div class="col-md-2">
+								<img src="assets/img/imgs/robotic.jpg" class="img-circle bd-30 img-responsive" height="50" width="50">
+							</div>
+							<div class="col-md-10 m-l-_60 mm-l-0">
+								<p class="m-b-0 f-12 m-t-10">Submitted 2 hours ago by <span class="c-blue">Adebayo Salami</span></p>
+								<!-- p>  
+								<span class="c-red m-l-58 mm-l-0 f-12">14 Likes</span>
+	                            <span class=" p-l-15 f-12">3 Dislike</span>
+	                            <span class=" p-l-20 f-12"> 3 Comments</span></p> -->
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<p class="c-red text-right m-b-0">Fintech</p>
+							<div>
+								<div class="row ">
+									<div class="col-md-1"><p>Yes</p></div>
+									<div class="col-md-9">
+										<div class="progress m-b-0 ">
+									  		<div class="progress-bar bg-green" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">70%
+									  		</div>
+										</div>
+									</div>
+									<div class="col-md-1">
+									  <label>
+									    <input type="radio" class="option-input1 radio" name="example"/>
+									  </label>
+									</div>
+									
+								</div>
+								<div class="row ">
+									<div class="col-md-1"><p>Yes</p></div>
+									<div class="col-md-9">
+										<div class="progress m-b-0">
+									  		<div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">70%
+									  		</div>
+										</div>
+									</div>
+									<div class="col-md-1"><label>
+									    <input type="radio" class="option-input2 radio" name="example"/>
+									  </label>
+									</div>
+									
+								</div>
+								<div class="row ">
+									<div class="col-md-1"><p>Yes</p></div>
+									<div class="col-md-9">
+										<div class="progress m-b-0">
+									  		<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">70%
+									  		</div>
+										</div>
+									</div>
+									<div class="col-md-1"><label>
+									    <input type="radio" class="option-input3 radio" name="example"/>
+									  </label>
+									</div>
+								</div>
+							</div>
+						<div class="">
+                            <span class=" p-l-15 ">4 shares.</span>
+                            <span class=" pull-right"> 25 views</span>
+                        </div>
+					</div>
+				</div>
+			</div><br>
+
+
+
+			
+
+
+		</div>
+		
+	</section>
+
+
+
+
+
+<script src="assets/js/jquery-3.1.1.min.js"></script>
+
+<script src="assets/js/bootstrap.min.js"></script>
+
+
+
+ <!-- <script type="text/javascript">$('[data-toggle="popover"]').popover();</script> -->
+
+
+
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript">
+
+    
+        $("[data-toggle=popover]").popover({
+    html: true, 
+    content: function() {
+          return $('#popover-content').html();
+        }
+});
+
+
+ 		app.imageHandler();
+      	apps.imagesHandler();
+       	app2.imageHandler();
+
+
+        // scroll to top functions
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Chrome, Safari and Opera 
+            document.documentElement.scrollTop = 0; // For IE and Firefox
+        }
+
+    </script>
+</body>
+</html>
