@@ -97,17 +97,20 @@ EMAIL_USE_TLS       = EMAIL_USE_TLS
 
 import dj_database_url
 
+# DATABASES = {
+#       'default': dj_database_url.config(
+#           default='sqlite:////{0}'.format(os.path.join(BASE_DIR, 'db.sqlite3'))
+#       )
+#   }
+
+default_dburl = 'sqlite.///' + os.path.join(BASE_DIR, 'db.sqlite3')
+
 DATABASES = {
-      'default': dj_database_url.config(
-          default='sqlite:////{0}'.format(os.path.join(BASE_DIR, 'db.sqlite3'))
-      )
-  }
+       'default': config('DATABASE_URL', default=default_dburl, cast=dburl)
+    }
 
-  # default_dburl = 'sqlite.///' + os.path.join(BASE_DIR, 'db.sqlite3')
-
-  # DATABASES = {
-  #      'default': config('DATABASE_URL', default=default_dburl, cast=dburl)
-  #   }
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
 
 
 # DATABASES = {
@@ -153,6 +156,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 LOGIN_URL = '/user/login/'
 LOGOUT_URL = '/user/logout/'
