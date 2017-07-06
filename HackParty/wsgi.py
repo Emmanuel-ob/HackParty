@@ -12,7 +12,7 @@ from dj_static import Cling
 from whitenoise.django import DjangoWhiteNoise
 from django.core.wsgi import get_wsgi_application
 
-application = DjangoWhiteNoise(HackParty)
+#application = DjangoWhiteNoise(HackParty1)
 
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "HackParty.settings")
