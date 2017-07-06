@@ -1,4 +1,4 @@
 *.sqlite3
 *pyc
 *mail_info.py
-*media
+*media/profile_images
