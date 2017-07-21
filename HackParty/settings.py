@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'user_mgr',
     'postApp',
     'pollApp',
+
+    'gunicorn',
     
 ]
 
