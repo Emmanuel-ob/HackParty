@@ -21,13 +21,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
 
+DEBUG=True
+SECRET_KEY = '3=r*^s_rzw@c02hraj!l0o95dkt-v=lbv+sxq#211&x+qws@%v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ["hackforum.herokuapp.com"]
+# SECRET_KEY = config('SECRET_KEY')
+# DEBUG = config('DEBUG', default=False, cast=bool)
+
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -42,8 +45,6 @@ INSTALLED_APPS = [
     'user_mgr',
     'postApp',
     'pollApp',
-
-    'gunicorn',
     
 ]
 
@@ -86,7 +87,7 @@ WSGI_APPLICATION = 'HackParty.wsgi.application'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-from HackParty.mail_info import EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT, EMAIL_USE_TLS
+from .mail_info import EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT, EMAIL_USE_TLS
 
 EMAIL_HOST          = EMAIL_HOST
 EMAIL_HOST_USER     = EMAIL_HOST_USER
@@ -97,30 +98,12 @@ EMAIL_USE_TLS       = EMAIL_USE_TLS
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-import dj_database_url
-
-# DATABASES = {
-#       'default': dj_database_url.config(
-#           default='sqlite:////{0}'.format(os.path.join(BASE_DIR, 'db.sqlite3'))
-#       )
-#   }
-
-default_dburl = 'sqlite.///' + os.path.join(BASE_DIR, 'db.sqlite3')
-
 DATABASES = {
-       'default': config('DATABASE_URL', default=default_dburl, cast=dburl)
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-
-# db_from_env = dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(db_from_env)
-
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+}
 
 
 # Password validation
@@ -158,13 +141,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 LOGIN_URL = '/user/login/'
 LOGOUT_URL = '/user/logout/'
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]

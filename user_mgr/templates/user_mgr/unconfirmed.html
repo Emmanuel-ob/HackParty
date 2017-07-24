@@ -18,7 +18,7 @@
 	              <p class="bg bg-success">{{msg}}</p>
 	           {% endfor %}
 	        {% endif %}
-	        <h4>Your confirmation link is invalid. Be sure that you have filled the HackParty signup form before, if not click the signup button.</h4>
+	        <h4>Your confirmation link is invalid. Be sure that you have filled the HarkParty signup form before, if not click the signup button.</h4>
             <a class="btn btn-inverse" id="btnd" style="margin-top: 10px; background-color: #d9534f; color: white;" href="{% url 'user_mgr:signUp'%}">SignUp</a>
 
             <form method="post" action="{% url 'user_mgr:resend_link'%}">
