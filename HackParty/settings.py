@@ -30,7 +30,7 @@ SECRET_KEY = '3=r*^s_rzw@c02hraj!l0o95dkt-v=lbv+sxq#211&x+qws@%v'
 # SECRET_KEY = config('SECRET_KEY')
 # DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -130,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC+01.00'
+TIME_ZONE = 'GMT+1'
 
 USE_I18N = True
 
