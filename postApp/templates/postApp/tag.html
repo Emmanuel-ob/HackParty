@@ -16,7 +16,7 @@
                   <p class="bg bg-success">{{msg}}</p>
                {% endfor %}
           {% endif %}
-    	<form method="post" action="/post/tag/">
+    	<form method="post" action="/tag/">
     	  {% csrf_token %}
     		<input type="text" name="tag_name">
     		<input type="submit" name="" value="SUBMIT">
