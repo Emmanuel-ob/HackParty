@@ -74,9 +74,9 @@
                                                       </label>
                                                   </div>
                                                 </li>
-                                                <li><a  href=''> Share post</a></li>
+                                                <!-- <li><a  href=''> Share post</a></li>
                                                 <li><a href=""> Report</a></li>
-                                                
+                                                 -->
                                                 {% if post.posted_by == request.user %}
                                                 <li><a data-toggle="modal" href="" class="edit_post_handler" post_id="{{ post.id }}" post_title="{{ post.title }}" post_body="{{ post.body }}" data-target="#edit"> Edit post</a></li>
                                                 <li><a  href="{% url 'postApp:deletePost' post.id %}"> Delete post</a></li>

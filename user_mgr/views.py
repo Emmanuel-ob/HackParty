@@ -124,7 +124,7 @@ def resend_link(request):
                         # to_email     = [rp['email'], from_email]
                         # send_mail(subject, message, from_email, to_email, fail_silently=True,)
                         try:
-                            subject      = 'HackPart Account Confirmation'
+                            subject      = 'HackParty Account Confirmation'
                             from_email   = settings.EMAIL_HOST_USER
                             to_email     = [email, from_email]
                             text_content = "Thank you for signing up on the hackparty platform. Please click on the link below to confirm your account: \n\n"
@@ -144,7 +144,7 @@ def resend_link(request):
                     if profile_saved:
                         
                         try:
-                            subject      = 'HackPart Account Confirmation'
+                            subject      = 'HackParty Account Confirmation'
                             from_email   = settings.EMAIL_HOST_USER
                             to_email     = [email, from_email]
                             text_content = "Thank you for signing up on the hackparty platform. Please click on the link below to confirm your account: \n\n"
@@ -165,7 +165,7 @@ def resend_link(request):
                 if profile_saved:
                     
                     try:
-                        subject      = 'HackPart Account Confirmation'
+                        subject      = 'HackParty Account Confirmation'
                         from_email   = settings.EMAIL_HOST_USER
                         to_email     = [email, from_email]
                         text_content = "Thank you for signing up on the hackparty platform. Please click on the link below to confirm your account: \n\n"
@@ -219,7 +219,7 @@ def create_account(request):
                     #print settings.EMAIL_HOST_USER
                     if profile:
                         try:
-                            subject      = 'HackPart Account Confirmation'
+                            subject      = 'HackParty Account Confirmation'
                             from_email   = settings.EMAIL_HOST_USER
                             to_email     = [email, from_email]
                             text_content = "Thank you for signing up on the hackparty platform. Please click on the link below to confirm your account: \n\n"
