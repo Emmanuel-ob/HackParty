@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from newsfeed.models import Like, Comment, Post, DisLike, Reply
+from postApp.models import Like, Comment, Post, DisLike, Reply
 
 class PostAdmin(admin.ModelAdmin):
 	list_display = ['posted_by', 'date_posted', 'is_hidden']
