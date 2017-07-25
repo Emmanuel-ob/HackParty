@@ -188,7 +188,7 @@
                                 <h4 class="modal-title text-center">Edit a Topic</h4>
                             </div>
                             <div class="modal-body">
-                                <form action="/post/edit/" method="post" role="form" enctype="multipart/form-data">
+                                <form action="{% url 'postApp:edit_post' %}" method="post" role="form" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     <div class="form-group">
                                         <input type="text" name="title" id="id_post_title" value="">
